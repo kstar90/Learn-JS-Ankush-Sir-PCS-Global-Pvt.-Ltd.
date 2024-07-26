@@ -18,7 +18,7 @@ const myHeroes = ['Spidy', 'Iron Man'];
 
 const myArr2 = new Array(1, 2, 3, 4);
 
-// console.log(myArr[1]);
+console.log(myArr[1]);
 
 // Array methods
 
@@ -35,7 +35,7 @@ const myArr2 = new Array(1, 2, 3, 4);
 // const newArr = myArr.join();
 
 // console.log(myArr);
-// console.log(typeof newArr);
+console.log(typeof newArr);
 
 // slice, splice
 
