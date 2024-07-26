@@ -14,7 +14,7 @@ console.log(myDate.toLocaleTimeString());
 
 console.log(myDate.getTimezoneOffset());
 
-console.log(typeof myDate); // Date is a object in JavaScript
+console.log(typeof myDate); // Date is an object in JavaScript
 
 // let myCreatedDate = new Date(2023, 0, 23);
 // let myCreatedDate = new Date(2023, 0, 23, 5, 3);
