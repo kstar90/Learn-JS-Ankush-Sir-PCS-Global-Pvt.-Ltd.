@@ -3,13 +3,13 @@
 
 // object literals
 
-// const mySym = Symbol("key1");
+const mySym = Symbol("key1");
 
 const JsUser = {
     name: "Hitesh",
     "full name": "Hitesh Choudhary",
     // mySym: "mykey1", // wrong syntax/way to add a symbol inside the object
-    // [mySym]: "mykey1", // correct way/syntax to add a symbol inside the object
+    [mySym]: "mykey1", // correct way/syntax to add a symbol inside the object
     age: 18,
     location: "Jaipur",
     email: "hitesh@google.com",
