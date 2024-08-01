@@ -8,15 +8,15 @@
 ## project 1 solution
 
 ```javascript
-console.log("Ankush")
+console.log("Ankush");
 const buttons = document.querySelectorAll('.button');
 const body = document.querySelector('body');
 
 buttons.forEach(function(button){
     console.log(button);
     button.addEventListener('click', function(event){
-        console.log(event)
-        console.log(event.target)
+        console.log(event);
+        console.log(event.target);
         if(event.target.id === 'blue'){
             body.style.backgroundColor = event.target.id;
         }
@@ -58,7 +58,23 @@ form.addEventListener('submit', function(e){
     } else {
         const bmi = (weight / ((height*height)/10000)).toFixed(2);
         // show the result
-        results.innerHTML = `<span>${bmi}</span>`;
+        results.innerHTML = `<span>${bmi} kg/m<sup>2</sup></span>`;
     }
-})
+});
+```
+
+## project 3 solution
+
+```javascript
+// const clock = document.querySelector('#clock');
+
+const clock = document.getElementById('clock');
+// let date = new Date();
+// console.log(date.toLocaleTimeString);
+
+setInterval(function(){
+    let date = new Date();
+    console.log(date.toLocaleTimeString());
+    clock.innerHTML = date.toLocaleTimeString();
+}, 1000);
 ```
