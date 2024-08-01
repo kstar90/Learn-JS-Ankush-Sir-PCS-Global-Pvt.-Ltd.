@@ -16,7 +16,16 @@ form.addEventListener('submit', function(e){
         results.innerHTML = `Please give a valid weight ${weight}`;
     } else {
         const bmi = (weight / ((height*height)/10000)).toFixed(2);
+        if(bmi > 0 && bmi < 18.6) {
+            results.innerHTML = `<span>${bmi} kg/m<sup>2</sup></span> 'You are under weighted'`;
+        } else if(bmi >= 18.6 && bmi <= 24.9) {
+            results.innerHTML = `<span>${bmi} kg/m<sup>2</sup></span> 'You are totally fit'`;
+            
+        } else if(bmi > 24.9) {
+            results.innerHTML = `<span>${bmi} kg/m<sup>2</sup></span> 'You are over weighted'`;
+        } else {
+            results.innerHTML = `<span>${bmi} kg/m<sup>2</sup></span>`;
+        }
         // show the result
-        results.innerHTML = `<span>${bmi}</span>`;
     }
 });
