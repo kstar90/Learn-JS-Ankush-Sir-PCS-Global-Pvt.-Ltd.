@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h2>0  UNSENT  Client has been created. open() not called yet.</h2>
+    <h2>1  OPENED  open() has been called.</h2>
+    <h2>2  HEADERS_RECEIVED  send() has beed called, and headers and status are available.</h2>
+    <h2>3  LOADING  Downloading; responseText holds partial data.</h2>
+    <h2>4  DONE  The operation is complete.</h2>
+</body>
+    <script>
+        const requestURL = 'https://api.github.com/users/hiteshchoudhary';
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', requestURL);
+        xhr.onreadystatechange = function(){
+            console.log(xhr.readyState);
+            if (xhr.readyState === 4) {
+                const data = JSON.parse(this.responseText);
+                console.log(data.followers);
+            };
+        };
+        // console.log(xhr.readyState);
+        xhr.send();
+    </script>
+</html>
