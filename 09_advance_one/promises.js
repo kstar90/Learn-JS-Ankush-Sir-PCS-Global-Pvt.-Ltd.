@@ -76,18 +76,18 @@ async function consumePromiseFive(){
 
 consumePromiseFive();
 
-// async function getAllUsers() {
-//     try {
-//         const response = await fetch('https://jsonplaceholder.typicode.com/users');
-//         // console.log(response);
-//         const data = await response.json();
-//         console.log(data);
-//     } catch (error) {
-//         console.log("Error: ", error);
-//     };
-// };
+async function getAllUsers() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        // console.log(response);
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log("Error: ", error);
+    };
+};
 
-// getAllUsers();
+getAllUsers();
 
 fetch('https://api.github.com/users/hiteshchoudhary')
 .then((response) => {
