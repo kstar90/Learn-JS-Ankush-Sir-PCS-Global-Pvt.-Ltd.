@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure aur chai</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+    <script>
+        // Lexical Scoping
+
+        // Example
+        function init(){
+            let name = "Mozilla"; // name is a local variable created by init
+            function displayName(){
+                // displayName() is the inner function, that forms the closure
+                console.log(name); // use variable declared in the parent function
+            }
+            displayName();
+        }
+        // init();
+
+        // new function
+
+        function outer(){
+            let username = "hitesh";
+
+            function inner(){
+                let secret = "my123";
+                console.log("inner", username);
+            }
+
+            function innerTwo(){
+                console.log("innerTwo",username);
+                console.log(secret);
+                
+            }
+            inner();
+            innerTwo();
+        }
+        // outer();
+        // console.log("Too outer",username);
+
+        // another Example of closure
+
+        function makeFunc(){
+            const name = "Mozilla";
+            function displayName(){
+                console.log(name);
+            }
+            return displayName;
+        }
+        const myFunc = makeFunc();
+        // myFunc();
+    </script>
+
+    <script>
+        // document.getElementById('orange').onclick = function(){
+        //     document.body.style.backgroundColor = `orange`;
+        // }
+        // document.getElementById('green').onclick = function(){
+        //     document.body.style.backgroundColor = `green`;
+        // }
+
+        // Use case scenario of closure with real world problems
+
+        function clickHandler(color){
+            // document.body.style.backgroundColor = `${color}`;
+            
+            return function(){
+                document.body.style.backgroundColor = `${color}`;
+            }
+        }
+
+        document.getElementById('orange').onclick = clickHandler("orange");
+        document.getElementById('green').onclick = clickHandler("green");
+        
+    </script>
+</html>
