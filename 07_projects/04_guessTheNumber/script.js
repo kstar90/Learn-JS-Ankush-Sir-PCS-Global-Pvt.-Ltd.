@@ -13,6 +13,7 @@ const p = document.createElement('p');
 
 let prevGuess = [];
 let numGuess = 1;
+let maxGuesses = 10;
 
 let playGame = true;
 
@@ -26,7 +27,7 @@ if(playGame){
 }
 
 function validateGuess(guess){
-    //
+    // validate the guess
     if(isNaN(guess)){
         alert('Please enter a valid number');
     } else if(guess < 1){
@@ -59,11 +60,11 @@ function checkGuess(guess){
 }
 
 function displayGuess(guess){
-    // 
+    // display the guess
     userInput.value = '';
     guessSlot.innerHTML += `${guess}, `;
     numGuess++;
-    remaining.innerHTML = `${12 - numGuess}`;
+    remaining.innerHTML = `${maxGuesses - numGuess + 1}`;
 }
 
 function displayMessage(message){
@@ -87,9 +88,10 @@ function newGame(){
         prevGuess = [];
         numGuess = 1;
         guessSlot.innerHTML = '';
-        remaining.innerHTML = `${11 - numGuess}`
+        remaining.innerHTML = `${maxGuesses}`;
         userInput.removeAttribute('disabled');
         startOver.removeChild(p);
         playGame = true;
+        // console.log(randomNumber)
     })
 }
