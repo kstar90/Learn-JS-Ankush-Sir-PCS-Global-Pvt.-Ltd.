@@ -82,9 +82,9 @@ setInterval(function(){
 ## project 4 solution
 
 ```javascript
-console.log(parseInt(Math.random() * 100 + 1)); // generating random number from 1 to 100
+console.log(Math.floor(Math.random() * 100 + 1)); // generating random number from 1 to 100
 
-let randomNumber = parseInt(Math.random() * 100 + 1);
+let randomNumber = Math.floor(Math.random() * 100 + 1);
 
 const submit = document.querySelector('#subt');
 const userInput = document.querySelector('#guessField');
@@ -96,7 +96,7 @@ const startOver = document.querySelector('.resultParas');
 const p = document.createElement('p');
 
 let prevGuess = [];
-let numGuess = 1;
+let numGuess = 0; // start at 0 because we increment on first guess
 let maxGuesses = 10;
 
 let playGame = true;
@@ -107,8 +107,8 @@ if(playGame){
         const guess = parseInt(userInput.value);
         console.log(guess);
         validateGuess(guess);
-    })
-}
+    });
+};
 
 function validateGuess(guess){
     // validate the guess
@@ -120,40 +120,38 @@ function validateGuess(guess){
         alert('Please enter a number less than 100');
     } else {
         prevGuess.push(guess);
-        if(numGuess === 11){
-            displayGuess(guess);
-            displayMessage(`Game Over, Random number was ${randomNumber}`);
-            endGame();
-        } else {
-            displayGuess(guess);
-            checkGuess(guess);
-        }
-    }
-}
+        displayGuess(guess);
+        checkGuess(guess);
+    };
+};
 
 function checkGuess(guess){
     // print the message
     if (guess === randomNumber) {
-        displayMessage('You guessed it right');
+        displayMessage('WOW !! You guessed it right');
+        endGame();
+    } else if (numGuess >= maxGuesses) {
+        displayMessage(`Game Over! random number was ${randomNumber}`);
         endGame();
     } else if (guess < randomNumber){
         displayMessage(`Number is too low`);
     } else if (guess > randomNumber){
         displayMessage(`Number is too high`);
-    }
-}
+    };
+};
 
 function displayGuess(guess){
     // display the guess
     userInput.value = '';
     guessSlot.innerHTML += `${guess}, `;
+    const guessesLeft = maxGuesses - numGuess - 1; // Update remaining guesses after increment
+    remaining.innerHTML = `${guessesLeft}`;
     numGuess++;
-    remaining.innerHTML = `${maxGuesses - numGuess + 1}`;
-}
+};
 
 function displayMessage(message){
     lowOrHi.innerHTML = `<h2>${message}</h2>`
-}
+};
 
 function endGame(){
     userInput.value = '';
@@ -163,22 +161,23 @@ function endGame(){
     startOver.appendChild(p);
     playGame = false;
     newGame();
-}
+};
 
 function newGame(){
     const newGameButton = document.querySelector('#newGame');
     newGameButton.addEventListener('click', function(event){
-        randomNumber = parseInt(Math.random() * 100 + 1);
+        displayMessage("");
+        randomNumber = Math.floor(Math.random() * 100 + 1);
         prevGuess = [];
-        numGuess = 1;
+        numGuess = 0; // Reset numGuess for the new game
         guessSlot.innerHTML = '';
         remaining.innerHTML = `${maxGuesses}`;
         userInput.removeAttribute('disabled');
         startOver.removeChild(p);
         playGame = true;
         // console.log(randomNumber)
-    })
-}
+    });
+};
 ```
 
 ## project 5 solution
